@@ -1,24 +1,15 @@
-var express = require("express");
-var bodyParser = require("body-parser");
-var MY_APP_NAME = 'TeamSportStatistics';
-// var mongodb = require("mongodb");
-// var ObjectID = mongodb.ObjectID;
-
-// var CONTACTS_COLLECTION = "contacts";
-
-var app = express();
-app.use(bodyParser.json());
-
-// Create link to Angular build directory
-var distDir = __dirname + "/dist/";
-app.use(express.static(distDir));
+const path = require('path');
+const express = require('express');
+const app = express();
+const MY_APP_NAME = 'TeamSportStatistic';
+const dist_folder = __dirname + '/dist/' + MY_APP_NAME;
 
 // Serve static files
-// app.use(express.static(__dirname + '/dist/MY_APP_NAME'));
+app.use(express.static(dist_folder));
 
 // Send all requests to index.html
 app.get('/*', function(req, res) {
-  res.sendFile(path.join(__dirname + `/dist/${MY_APP_NAME}/index.html`));
+  res.sendFile(path.join(dist_folder + '/index.html'));
 });
 
 // default Heroku port
