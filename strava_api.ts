@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { StravaApiV3 } 'strava_api_v3';
 
 @Injectable({
   providedIn: 'root',
@@ -8,14 +9,24 @@ import { Injectable } from '@angular/core';
   private auth_link = "https://www.strava.com/oauth/token";
 
   private async getActivities(res: any) {
-    const activities_link = `https://www.strava.com/api/v3/athlete`
-    await fetch(activities_link, {
-      method: 'GET',
-      headers: {
-        'Authorization': `Bearer ${res.access_token}`
+    const defaultClient = StravaApiV3.ApiClient.instance;
+
+    // Configure OAuth2 access token for authorization: strava_oauth
+    const strava_oauth = defaultClient.authentications['strava_oauth'];
+    strava_oauth.accessToken = res.access_token
+    const api = new StravaApiV3.ActivitiesApi()
+    const opts = {
+      'includeAllEfforts': true // {Boolean} To include all segments efforts.
+    };
+
+    const callback = function(error: any, data: any, response: any) {
+      if (error) {
+        console.error(error);
+      } else {
+        console.log('API called successfully. Returned data: ' + data);
       }
-    })
-    .then((res) => console.log(res.json()))
+    };
+    api.getLoggedInAthleteActivities(opts, callback);
   }
 
   async reAuthorizeAndGetActivities() {
