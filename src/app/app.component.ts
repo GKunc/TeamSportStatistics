@@ -22,6 +22,10 @@ export class AppComponent {
     this.flag++;
   }
 
+  example() {
+
+  }
+  
   run() {
     fetch("/api/movie")
       .then((response) => response.json())

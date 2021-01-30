@@ -1,5 +1,6 @@
 const path = require('path');
 const express = require('express');
+const { MongoClient } = require("mongodb");
 const app = express();
 const MY_APP_NAME = 'TeamSportStatistics';
 const dist_folder = __dirname + '/dist/' + MY_APP_NAME;
@@ -17,7 +18,7 @@ app.get('/', function(req, res) {
 // default Heroku port
 app.listen(process.env.PORT || 5000);
 
-app.get('/api/example', (req, res) => res.send('Hello World!'));
+app.get('/api/example', (req, res) => res.send(uri));
 
 // ================================
 app.get("/api/movie", async function (req, res) {
