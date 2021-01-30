@@ -10,7 +10,7 @@ const uri = process.env.MONGODB_URI;
 app.use(express.static(dist_folder));
 
 // Send all requests to index.html
-app.get('/*', function(req, res) {
+app.get('/', function(req, res) {
   res.sendFile(path.join(dist_folder + '/index.html'));
 });
 
