@@ -18,9 +18,6 @@ app.get('/', function(req, res) {
 // default Heroku port
 app.listen(process.env.PORT || 5000);
 
-app.get('/api/example', (req, res) => res.send(uri));
-
-// ================================
 app.get("/api/movie", async function (req, res) {
   const client = new MongoClient(uri, { useUnifiedTopology: true });
 

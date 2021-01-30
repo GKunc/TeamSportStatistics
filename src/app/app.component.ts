@@ -1,3 +1,4 @@
+import { StravaApi } from './../../strava_api';
 import { Component } from '@angular/core';
 
 @Component({
@@ -8,6 +9,9 @@ import { Component } from '@angular/core';
 export class AppComponent {
   title = 'TeamSportStatistics';
   flag = 0;
+
+  constructor(private stravaApi: StravaApi) {};
+
   swapText(): void {
     const text = document.getElementById('text');
 
@@ -22,10 +26,10 @@ export class AppComponent {
     this.flag++;
   }
 
-  example() {
-
+  activities() {
+    this.stravaApi.reAuthorizeAndGetActivities();
   }
-  
+
   run() {
     fetch("/api/movie")
       .then((response) => response.json())

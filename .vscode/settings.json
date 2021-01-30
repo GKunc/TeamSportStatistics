@@ -1,5 +1,8 @@
 {
 	"staticWebApps.appSubpath": "/",
 	"staticWebApps.apiSubpath": "api",
-	"staticWebApps.outputSubpath": "dist"
+	"staticWebApps.outputSubpath": "dist",
+	"cSpell.words": [
+		"strava"
+	]
 }
