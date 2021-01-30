@@ -28,9 +28,7 @@ import { Injectable } from '@angular/core';
               refresh_token: '2c27dcc3f3deef089135fcdb701fc396090bdc21',
               grant_type: 'refresh_token'
           })
-      })
-      .then(res => {
-        this.getActivities(res.json())
-      });
+        }).then(res => res.json())
+        .then(res => this.getActivities(res))
   }
 }
