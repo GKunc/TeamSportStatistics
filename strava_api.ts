@@ -8,9 +8,10 @@ import { Injectable } from '@angular/core';
   private auth_link = "https://www.strava.com/oauth/token";
 
   private getActivities(res: any) {
-      const activities_link = `https://www.strava.com/api/v3/athlete/activities?access_token=${res.access_token}`
-      fetch(activities_link)
-          .then((res) => console.log(res.json()))
+    console.log(res)
+    const activities_link = `https://www.strava.com/api/v3/athlete/activities?access_token=${res.access_token}`
+    fetch(activities_link)
+      .then((res) => console.log(res.json()))
   }
 
   reAuthorizeAndGetActivities() {
@@ -29,8 +30,7 @@ import { Injectable } from '@angular/core';
           })
       })
       .then(res => {
-        console.log(res)
-        this.getActivities(res)
+        this.getActivities(res.json())
       });
   }
 }
