@@ -9,9 +9,13 @@ import { Injectable } from '@angular/core';
 
   private getActivities(res: any) {
     console.log(res)
-    const activities_link = `https://www.strava.com/api/v3/athlete/activities?access_token=${res.access_token}`
-    fetch(activities_link)
-      .then((res) => console.log(res.json()))
+    const activities_link = `https://www.strava.com/api/v3/athlete`
+    await fetch(activities_link, {
+      method: 'GET',
+      headers: {
+        'Authorization': `Bearer ${res.access_token}`,
+    })
+    .then((res) => console.log(res.json()))
   }
 
   async reAuthorizeAndGetActivities() {
