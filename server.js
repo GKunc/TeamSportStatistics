@@ -1,5 +1,6 @@
 var express = require("express");
 var bodyParser = require("body-parser");
+var MY_APP_NAME = 'TeamSportStatistics';
 // var mongodb = require("mongodb");
 // var ObjectID = mongodb.ObjectID;
 
@@ -16,9 +17,9 @@ app.use(express.static(distDir));
 // app.use(express.static(__dirname + '/dist/MY_APP_NAME'));
 
 // Send all requests to index.html
-// app.get('/*', function(req, res) {
-  // res.sendFile(path.join(__dirname + '/dist/MY_APP_NAME/index.html'));
-// });
+app.get('/*', function(req, res) {
+  res.sendFile(path.join(__dirname + `/dist/${MY_APP_NAME}/index.html`));
+});
 
 // default Heroku port
 app.listen(process.env.PORT || 5000);
