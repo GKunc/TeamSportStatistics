@@ -26,8 +26,8 @@ export class AppComponent {
     this.flag++;
   }
 
-  activities() {
-    this.stravaApi.reAuthorizeAndGetActivities();
+  async activities() {
+    await this.stravaApi.reAuthorizeAndGetActivities();
   }
 
   run() {

@@ -14,8 +14,8 @@ import { Injectable } from '@angular/core';
       .then((res) => console.log(res.json()))
   }
 
-  reAuthorizeAndGetActivities() {
-      fetch(this.auth_link, {
+  async reAuthorizeAndGetActivities() {
+      await fetch(this.auth_link, {
           method: 'post',
           headers: {
               'Accept': 'application/json, text/plain, */*',
