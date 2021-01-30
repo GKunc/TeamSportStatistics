@@ -21,15 +21,16 @@ import { Injectable } from '@angular/core';
               'Content-Type': 'application/json'
 
           },
-
           body: JSON.stringify({
-
               client_id: '60851',
               client_secret: '8b73fc0f8e69dc71c8ebb2f48e45a84f228c909e',
               refresh_token: '2c27dcc3f3deef089135fcdb701fc396090bdc21',
               grant_type: 'refresh_token'
           })
       })
-      .then(res => this.getActivities(res));
+      .then(res => {
+        console.log(res)
+        this.getActivities(res)
+      });
   }
 }
