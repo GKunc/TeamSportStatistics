@@ -13,6 +13,7 @@ app.use(express.static(dist_folder));
 // Send all requests to index.html
 app.get('/', function(req, res) {
   res.sendFile(path.join(dist_folder + '/index.html'));
+  console.log(window.location.href);
 });
 
 // default Heroku port
