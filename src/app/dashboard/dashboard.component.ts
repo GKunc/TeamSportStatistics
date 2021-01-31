@@ -23,7 +23,7 @@ export class DashboardComponent implements OnInit {
   isAuthorized() {
     console.log("URL: " + this.router.url);
 
-    return true;
+    return false;
   }
 
 }
