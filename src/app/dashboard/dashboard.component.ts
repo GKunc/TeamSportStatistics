@@ -21,7 +21,11 @@ export class DashboardComponent implements OnInit {
   }
 
   isAuthorized() {
-    console.log("URL: " + this.router.url);
+    console.log("IS AUTHORIZED")
+    this.route.queryParams.subscribe(params => {
+      console.log(params);
+    });
+    console.log("------")
 
     return false;
   }
