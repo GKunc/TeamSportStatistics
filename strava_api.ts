@@ -1,12 +1,4 @@
 import { Injectable } from '@angular/core';
-import { default as strava, Strava } from 'strava-v3';
-
-strava.config({
-  "access_token"  : "deba644de2c258ded7b91df51f530b5244de7680",
-  "client_id"     : "Y60851",
-  "client_secret" : "8b73fc0f8e69dc71c8ebb2f48e45a84f228c909e",
-  "redirect_uri"  : "Your apps Authorization Redirection URI (Required for oauth)",
-});
 
 @Injectable({
   providedIn: 'root',
@@ -16,8 +8,14 @@ strava.config({
   private auth_link = "https://www.strava.com/oauth/token";
 
   private async getActivities(res: any) {
-    const payload = await strava.athlete.get({})
-    console.log(payload)
+    const activities_link = `https://www.strava.com/api/v3/athlete`
+    await fetch(activities_link, {
+      method: 'GET',
+      headers: {
+        'Authorization': `Bearer ${res.access_token}`
+      }
+    })
+    .then((res) => console.log(res.json()))
   }
 
   async reAuthorizeAndGetActivities() {
