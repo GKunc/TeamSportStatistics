@@ -13,13 +13,13 @@ app.use(express.static(dist_folder));
 // Send all requests to index.html
 app.get('/', function(req, res) {
   res.sendFile(path.join(dist_folder + '/index.html'));
-  console.log(window.location.href);
+  console.log(window.location.pathname);
 });
 
 // default Heroku port
 app.listen(process.env.PORT || 5000);
 
-app.get("/api/movie", async function (req, res) {
+app.get("/api/movie", async (req, res)  => {
   const client = new MongoClient(uri, { useUnifiedTopology: true });
 
   try {

@@ -8,18 +8,10 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'TeamSportStatistics';
-  flag = 0;
 
   constructor(private stravaApi: StravaApi) {};
 
-  authorizeStrava(): void {
-    const client_id = '60851';
-    const response_type = 'code';
-    const redirect_uri = 'https://teamsportstatistics.herokuapp.com/';
-    const approval_prompt = 'auto'
-    const scope = 'read_all';
-    const oauth_uri = `https://www.strava.com/oauth/authorize?client_id=${client_id}&response_type=${response_type}&redirect_uri=${redirect_uri}&approval_prompt=${approval_prompt}&scope=${scope}`
-    window.location.href = oauth_uri;
+  ngOnInit(): void {
   }
 
   async activities() {
