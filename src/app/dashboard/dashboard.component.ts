@@ -7,27 +7,33 @@ import { Router, ActivatedRoute } from '@angular/router';
   styleUrls: ['./dashboard.component.scss']
 })
 export class DashboardComponent implements OnInit {
-  constructor(
-    private router: Router,
-    private route: ActivatedRoute,
-  ) { }
+  private authorizationCode: string;
+
+  constructor(private router: Router, private route: ActivatedRoute) { }
 
   ngOnInit(): void {
-    if(this.isAuthorized()) {
+    this.authorizationCode = this.getAuthorizationCode();
+    if(this.authorizationCode) {
+      console.log("CODE" + this.authorizationCode)
       this.router.navigate(['dashboard']);
     } else {
       this.router.navigate(['login']);
     }
   }
 
-  isAuthorized() {
-    console.log("IS AUTHORIZED")
+  getAuthorizationCode(): string {
+    let authorizationCode: string;
     this.route.queryParams.subscribe(params => {
-      console.log(params);
+      if (params.code) {
+        authorizationCode = params.code;
+      } else {
+        authorizationCode = null;
+      }
     });
-    console.log("------")
-
-    return false;
+    return authorizationCode;
   }
 
+  saveTokenToDatabase(): void {
+
+  }
 }
