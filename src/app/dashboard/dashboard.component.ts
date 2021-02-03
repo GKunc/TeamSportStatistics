@@ -9,17 +9,19 @@ import { Router, ActivatedRoute } from '@angular/router';
 })
 export class DashboardComponent implements OnInit {
   private authorizationCode: string;
+  activities: any;
 
   constructor(
     private router: Router,
     private route: ActivatedRoute,
     private stravaApi: StravaApi) { }
 
-  ngOnInit(): void {
+  async ngOnInit(): Promise<void> {
     this.authorizationCode = this.getAuthorizationCode();
     if(this.authorizationCode) {
       this.router.navigate(['dashboard']);
       this.stravaApi.refreshAccessToken(this.authorizationCode);
+      await this.getActivities();
     } else {
       this.router.navigate(['login']);
     }
@@ -38,6 +40,6 @@ export class DashboardComponent implements OnInit {
   }
 
   async getActivities(): Promise<void> {
-    await this.stravaApi.getActivities();
+    this.activities = await this.stravaApi.getActivities();
   }
 }

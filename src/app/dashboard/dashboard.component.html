@@ -1,2 +1,8 @@
 <p>dashboard works!</p>
+<ul>
+  <li *ng-for="let activity of activities">
+     {{activity.name}} {{activity.distance}}
+  </li>
+</ul>
+
 <button (click)="getActivities()">Activities</button>
