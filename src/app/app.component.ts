@@ -1,4 +1,4 @@
-import { StravaApi } from './../../strava_api';
+import { StravaApi } from '../core/strava_api';
 import { Component } from '@angular/core';
 
 @Component({

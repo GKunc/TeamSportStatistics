@@ -1,3 +1,4 @@
+import { StravaApi } from '../../core/strava_api';
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 
@@ -9,13 +10,16 @@ import { Router, ActivatedRoute } from '@angular/router';
 export class DashboardComponent implements OnInit {
   private authorizationCode: string;
 
-  constructor(private router: Router, private route: ActivatedRoute) { }
+  constructor(
+    private router: Router,
+    private route: ActivatedRoute,
+    private stravaApi: StravaApi) { }
 
   ngOnInit(): void {
     this.authorizationCode = this.getAuthorizationCode();
     if(this.authorizationCode) {
-      console.log("CODE" + this.authorizationCode)
       this.router.navigate(['dashboard']);
+      this.stravaApi.refreshAccessToken(this.authorizationCode);
     } else {
       this.router.navigate(['login']);
     }
@@ -33,7 +37,7 @@ export class DashboardComponent implements OnInit {
     return authorizationCode;
   }
 
-  saveTokenToDatabase(): void {
-
+  async getActivities(): Promise<void> {
+    await this.stravaApi.getActivities();
   }
 }
