@@ -44,8 +44,8 @@ import { Injectable } from '@angular/core';
 
   authorizeStrava(): void {
     const response_type = 'code';
-    // const redirect_uri = "http://localhost:4200/";
-    const redirect_uri = 'https://teamsportstatistics.herokuapp.com/';
+    const redirect_uri = "http://localhost:4200/";
+    // const redirect_uri = 'https://teamsportstatistics.herokuapp.com/';
     const approval_prompt = 'auto'
     // const scope = 'read_all';
     const scope = 'activity:read';
