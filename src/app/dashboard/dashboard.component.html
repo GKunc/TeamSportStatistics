@@ -5,11 +5,11 @@
     LOADING
   </div>
   <div id="content">
-    <ul>
-      <li *ngFor="let activity of activities">
-        Name: {{activity.name}}, Distance: {{activity.distance}}
-      </li>
-    </ul>
+
+    <div *ngFor="let activity of activities">
+      <app-activity-card [activityName]="activity.name" [distance]="activity.distance"></app-activity-card>
+    </div>
+
     <div class="center-button">
       <button id="get-activities-button" (click)="getActivities()">Get Activities</button>
     </div>
