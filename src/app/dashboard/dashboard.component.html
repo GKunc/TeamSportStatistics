@@ -1,8 +1,17 @@
-<p>dashboard works!</p>
-<ul>
-  <li *ng-for="let activity of activities">
-     {{activity.name}} {{activity.distance}}
-  </li>
-</ul>
+<div id="dashboard-page">
 
-<button (click)="getActivities()">Activities</button>
+  <h1 id="page-title">My workouts!</h1>
+  <div id="loading-spinner" *ngIf="isLoading">
+    LOADING
+  </div>
+  <div id="content">
+    <ul>
+      <li *ngFor="let activity of activities">
+        Name: {{activity.name}}, Distance: {{activity.distance}}
+      </li>
+    </ul>
+    <div class="center-button">
+      <button id="get-activities-button" (click)="getActivities()">Get Activities</button>
+    </div>
+  </div>
+</div>

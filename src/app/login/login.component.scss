@@ -1,0 +1,31 @@
+#login-page {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgb(11, 17, 32);
+  background-position: center top;
+
+  #page-title {
+    color: white;
+    text-align: center;
+  }
+
+  #content{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    #connect-button{
+      width: 50%;
+      border-radius: 0.5rem;
+      color: rgb(37, 35, 35);
+      background-color: white;
+      border: 1px solid black;
+      font-size: 24px;
+      font-weight: bolder;
+      padding: 8px;
+    }
+  }
+}

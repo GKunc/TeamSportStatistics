@@ -1,0 +1,31 @@
+#dashboard-page {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgb(37, 35, 35);
+  background-position: center top;
+  color: white;
+
+  #page-title {
+    color: white;
+    text-align: center;
+  }
+
+  .center-button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    #get-activities-button {
+      width: 50%;
+      border-radius: 0.5rem;
+      color: rgb(37, 35, 35);
+      background-color: white;
+      font-size: 24px;
+      font-weight: bolder;
+      padding: 8px;
+    }
+  }
+}

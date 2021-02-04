@@ -10,7 +10,7 @@ import { Injectable } from '@angular/core';
   private client_id = '60851';
 
   async getActivities() {
-    console.log("TOKEN: " + this.access_token)
+    let activities;
     const activities_link = `https://www.strava.com/api/v3/activities`
     await fetch(activities_link, {
       method: 'GET',
@@ -19,7 +19,10 @@ import { Injectable } from '@angular/core';
       }
     })
     .then(response => response.json())
-    .then(parsed => console.log(parsed));  }
+    .then(parsed => activities = parsed);
+
+    return activities;
+  }
 
   async reAuthorizeAndGetActivities() {
       await fetch(this.token_link, {
